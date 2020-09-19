@@ -75,7 +75,7 @@ class TableReader:
 
 
 class CrozillaSpider(scrapy.Spider):
-    name = 'crozilla_spider'
+    name = 'crozilla'
     allowed_domains = ['www.crozilla-nekretnine.com']
     result_list_xpath = """//*[contains(@class,"ct-itemProducts")]/a/@href"""
     next_page_xpath = """//a[text()="›"]/@href"""
@@ -176,4 +176,4 @@ class CrozillaSpider(scrapy.Spider):
             return 0
 
     def extract_type(self, reader: TableReader):
-        return reader["Anzeigetyp"].strip().rsplit(' ', 1)[0].lower()
+        return reader["Anzeigetyp"].strip().rsplit(' ', 1)[0].upper()
